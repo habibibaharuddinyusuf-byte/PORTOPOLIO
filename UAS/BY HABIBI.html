@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Learning SMA Sandikta - Cyber Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --cyber-cyan: #00ffff;
+  --cyber-blue: #0099ff;
+  --dark-navy: #001829;
+  --darker-navy: #000a12;
+  --glass-bg: rgba(0, 40, 80, 0.7);
+}
+
+body {
+  background: #000000;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* CYBER GRID BACKGROUND */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  animation: gridMove 15s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+/* ANIMATED GLOW BACKGROUND */
+.bg-animation {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  animation: float 25s infinite ease-in-out;
+}
+
+.shape1 {
+  width: 500px;
+  height: 500px;
+  background: var(--cyber-cyan);
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 450px;
+  height: 450px;
+  background: var(--cyber-blue);
+  top: 50%;
+  right: 10%;
+  animation-delay: 7s;
+}
+
+.shape3 {
+  width: 400px;
+  height: 400px;
+  background: #0047ab;
+  bottom: 15%;
+  left: 40%;
+  animation-delay: 14s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(60px, -60px) rotate(90deg); }
+  50% { transform: translate(120px, 60px) rotate(180deg); }
+  75% { transform: translate(-60px, 120px) rotate(270deg); }
+}
+
+/* PARTICLES */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--cyber-cyan);
+  border-radius: 50%;
+  opacity: 0.6;
+  box-shadow: 0 0 10px var(--cyber-cyan);
+  animation: twinkle 2.5s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(0.7); }
+}
+
+/* SLIDER */
+.slider {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 600vw;
+  transition: transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.slide {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 100px 30px 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* CYBER SCAN LINE */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-cyan), transparent);
+  animation: scanLine 3s linear infinite;
+}
+
+@keyframes scanLine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+  line-height: 1.2;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-blue), var(--cyber-cyan));
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: neonGlow 3s ease-in-out infinite, gradientShift 3s ease infinite;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+@keyframes neonGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px var(--cyber-cyan)) drop-shadow(0 0 20px var(--cyber-blue));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px var(--cyber-cyan)) drop-shadow(0 0 30px var(--cyber-blue));
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1:hover {
+  animation: glitch 0.5s, neonGlow 3s ease-in-out infinite, gradientShift 3s ease infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                0.05em 0 0 rgba(0, 255, 0, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                0.05em 0 0 rgba(0, 255, 0, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+                -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+}
+
+h4 {
+  color: var(--cyber-cyan);
+  font-size: 1.1rem;
+  margin-top: 15px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+p {
+  max-width: 800px;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #a8dadc;
+  font-weight: 300;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
+}
+
+/* CYBER BUTTON */
+.link-btn {
+  margin-top: 35px;
+  padding: 16px 42px;
+  border-radius: 50px;
+  border: 2px solid var(--cyber-cyan);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  color: var(--cyber-cyan);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  display: inline-block;
+}
+
+.link-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.link-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.link-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 15px 45px rgba(0, 153, 255, 0.4);
+  border-color: var(--cyber-cyan);
+  background: rgba(0, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* FEATURE CARDS */
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.feature-item {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  padding: 35px 25px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-size: 1.05rem;
+  color: #a8dadc;
+  font-weight: 500;
+}
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.15), transparent);
+  transition: left 0.5s;
+}
+
+.feature-item:hover::before {
+  left: 100%;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), 0 20px 60px rgba(0, 153, 255, 0.3);
+  border-color: var(--cyber-cyan);
+  background: rgba(0, 60, 120, 0.8);
+  color: #ffffff;
+}
+
+/* SCREENSHOT GRID */
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.screenshot-item {
+  background: var(--glass-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.screenshot-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(0, 255, 255, 0.2));
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.screenshot-item:hover::after {
+  opacity: 1;
+  animation: shine 1s;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(100%) translateY(100%); }
+}
+
+.screenshot-item:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.5), 0 25px 70px rgba(0, 153, 255, 0.4);
+  border-color: var(--cyber-cyan);
+}
+
+.screenshot-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.screenshot-item:hover img {
+  transform: scale(1.05);
+}
+
+/* VIDEO CONTAINER */
+.video-container {
+  margin-top: 40px;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+}
+
+/* PROFILE CONTAINER */
+.profile-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+  margin-top: 40px;
+  padding: 40px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.profile-photo {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-photo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid var(--cyber-cyan);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 153, 255, 0.3);
+  object-fit: cover;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.profile-info {
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-info p {
+  margin: 12px 0;
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  max-width: 100%;
+}
+
+.profile-info strong {
+  color: var(--cyber-cyan);
+  font-weight: 600;
+}
+
+.profile-info a {
+  color: var(--cyber-cyan);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.profile-info a:hover {
+  text-shadow: 0 0 10px var(--cyber-cyan);
+}
+
+/* NAVIGATION */
+.nav {
+  position: fixed;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  background: var(--glass-bg);
+  padding: 12px 25px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
+  z-index: 100;
+}
+
+.nav button {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: 2px solid var(--cyber-cyan);
+  background: rgba(0, 40, 80, 0.8);
+  color: var(--cyber-cyan);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.nav button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.nav button:hover {
+  transform: scale(1.05);
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  color: #ffffff;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px);
+  padding: 40px;
+  border-radius: 30px;
+  max-width: 900px;
+  width: 90%;
+  text-align: center;
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 60px rgba(0, 255, 255, 0.4), 0 30px 100px rgba(0, 0, 0, 0.8);
+  animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.modal-content::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--cyber-cyan), var(--cyber-blue), var(--cyber-cyan));
+  border-radius: 30px;
+  z-index: -1;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+}
+
+.close {
+  margin-top: 25px;
+  padding: 14px 40px;
+  border: 2px solid var(--cyber-cyan);
+  border-radius: 50px;
+  background: rgba(0, 40, 80, 0.8);
+  color: var(--cyber-cyan);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.close::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.close:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.close:hover {
+  transform: scale(1.05);
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  color: #ffffff;
+}
+
+/* GRID TEKNOLOGI */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.feature-item img {
+  width: 100%;
+  max-width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-top: 12px;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.4));
+  transition: all 0.4s;
+}
+
+.feature-item:hover img {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 25px rgba(0, 255, 255, 0.7));
+}
+
+/* SCROLL INDICATOR */
+.scroll-indicator {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(0, 255, 255, 0.5);
+  border-radius: 25px;
+  animation: scrollBounce 2s infinite;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 10px;
+  background: var(--cyber-cyan);
+  border-radius: 3px;
+  animation: scrollDot 2s infinite;
+  box-shadow: 0 0 10px var(--cyber-cyan);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+@keyframes scrollDot {
+  0% { opacity: 0; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+}
+
+/* FLOATING ANIMATION */
+@keyframes floatItem {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.feature-item {
+  animation: floatItem 3s ease-in-out infinite;
+}
+
+.feature-item:nth-child(2n) {
+  animation-delay: 0.5s;
+}
+
+.feature-item:nth-child(3n) {
+  animation-delay: 1s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  .profile-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+  }
+  .profile-info { text-align: center; }
+  .profile-photo img { width: 150px; height: 150px; }
+  .nav {
+    bottom: 20px;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  .nav button { padding: 10px 20px; font-size: 0.9rem; }
+  .screenshot-grid, .feature-list, .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  p { font-size: 1rem; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="bg-animation">
+  <div class="floating-shapes">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+  </div>
+  <div class="particles" id="particles"></div>
+</div>
+
+<div class="slider" id="slider">
+
+<!-- 1 WELCOME -->
+<section class="slide">
+  <h1>🚀 E-LEARNING MAN 3 BOGOR</h1>
+  <p>Platform E-Learning modern dengan teknologi terkini untuk pengalaman belajar yang optimal dan interaktif. Dirancang khusus untuk mendukung proses pembelajaran digital yang efektif.</p>
+  <a class="link-btn" href="http://localhost/candycbt/panel/login.php" target="_blank">🌐 DEMO APLIKASI</a>
+  <div class="scroll-indicator"></div>
+</section>
+
+<!-- 2 FITUR -->
+<section class="slide">
+  <h1>✨ FITUR UNGGULAN</h1>
+  <p style="margin-bottom: 20px;">Sistem lengkap untuk manajemen ujian online berbasis Computer Based Test</p>
+  <div class="feature-list">
+    <div class="feature-item" onclick="popup('Dashboard merupakan halaman utama setelah pengguna (administrator) berhasil login ke dalam sistem.')">📊 Dashboard</div>
+    <div class="feature-item" onclick="popup('Fitur Data Peserta digunakan untuk mengelola seluruh informasi siswa yang akan mengikuti ujian.')">👥 Data Peserta</div>
+    <div class="feature-item" onclick="popup('Fitur Bank Soal berfungsi sebagai tempat penyimpanan dan pengelolaan soal ujian.')">📚 Data Bank Soal</div>
+    <div class="feature-item" onclick="popup('Fitur Data Ujian digunakan untuk mengatur pelaksanaan ujian.')">📝 Data Ujian</div>
+    <div class="feature-item" onclick="popup('Fitur Data Nilai berfungsi untuk menampilkan dan mengelola hasil ujian peserta. Nilai diperoleh secara otomatis berdasarkan jawaban peserta.')">🏆 Data Nilai</div>
+    <div class="feature-item" onclick="popup('Fitur Data Jawaban menyimpan seluruh jawaban yang diberikan oleh peserta selama ujian berlangsung.')">✅ Data Jawaban</div>
+    <div class="feature-item" onclick="popup('Fitur Mata Pelajaran digunakan untuk mengelola daftar mata pelajaran yang tersedia dalam sistem.')">📖 Mata Pelajaran</div>
+    <div class="feature-item" onclick="popup('Fitur Status Peserta digunakan untuk memantau kondisi peserta ujian secara real-time.')">🔄 Status Peserta</div>
+    <div class="feature-item" onclick="popup('Menu Ujian berfungsi sebagai penghubung antara peserta dan ujian yang tersedia. Pada menu ini ditampilkan ujian aktif yang dapat diakses oleh peserta sesuai dengan jadwal dan ketentuan yang telah ditetapkan.')">🎯 Menu Ujian</div>
+    <div class="feature-item" onclick="popup('Fitur Cetak digunakan untuk mencetak laporan yang dibutuhkan.')">🖨️ Cetak</div>
+    <div class="feature-item" onclick="popup('Fitur Pengumuman digunakan untuk menyampaikan informasi penting kepada peserta ujian.')">📢 Pengumuman</div>
+    <div class="feature-item" onclick="popup('Fitur Log Aktivitas berfungsi mencatat seluruh aktivitas pengguna dalam sistem.')">📋 Log Aktivitas</div>
+    <div class="feature-item" onclick="popup('Fitur Manajemen User digunakan untuk mengelola akun pengguna sistem.')">👤 Manajemen User</div>
+    <div class="feature-item" onclick="popup('Fitur Pengaturan digunakan untuk melakukan konfigurasi sistem aplikasi.')">⚙️ Pengaturan Sistem</div>
+    <div class="feature-item" onclick="popup('Aplikasi menyediakan fitur bantuan berupa, Website, Telegram, dan Tutorial.')">💬 Akses Bantuan</div>
+    <div class="feature-item" onclick="popup('Fitur ini menampilkan informasi pengguna yang sedang login (administrator) serta menyediakan tombol Keluar (Logout) untuk mengakhiri sesi penggunaan aplikasi dengan aman.')">🔐 Manajemen Akun</div>
+  </div>
+</section>
+
+<!-- 3 TAMPILAN -->
+<section class="slide">
+  <h1>🖼️ TAMPILAN APLIKASI</h1>
+  <p style="margin-bottom: 20px;">Interface modern dan user-friendly untuk pengalaman pengguna yang optimal</p>
+  <div class="screenshot-grid">
+    <div class="screenshot-item" onclick="popupImg(this)">
+      <img src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\LOGIN.png" alt="Login Page">
+      <h4>LOGIN PAGE</h4>
+    </div>
+    <div class="screenshot-item" onclick="popupImg(this)">
+      <img src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\DASBORD USER.png" alt="Dashboard">
+      <h4>DASHBOARD USER</h4>
+    </div>
+    <div class="screenshot-item" onclick="popupImg(this)">
+      <img src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\DASBORD ADMIN.png" alt="Dashboard Admin">
+      <h4>DASHBOARD ADMIN</h4>
+    </div>
+    <div class="screenshot-item" onclick="popupImg(this)">
+      <img src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\DASBOR SISWA.png" alt="Dashboard Produk">
+      <h4>DASHBOARD DAFTAR SISWA</h4>
+    </div>
+    <div class="screenshot-item" onclick="popupImg(this)">
+      <img src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\MANAJEMEN GURU.png" alt="Dashboard Produk">
+      <h4>DASHBOARD MANAJEMAN GURU</h4>
+    </div>
+    <div class="screenshot-item" onclick="popupImg(this)">
+      <img src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\Screenshot 2026-01-13 212224.png" alt="Dashboard Produk">
+      <h4>DASHBOARD GURU</h4>
+    </div>
+    <div class="screenshot-item" onclick="popupImg(this)">
+      <img src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\dasbor pengawas.png" alt="Dashboard Produk">
+      <h4>DASHBOARD PENGAWAS</h4>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 4 VIDEO -->
+<section class="slide">
+  <h1>📹 VIDEO DEMO</h1>
+  <p>Lihat bagaimana aplikasi bekerja dalam aksi dengan fitur-fitur lengkap</p>
+  <div class="video-container">
+    <video controls>
+      <source src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\WhatsApp Video 2026-01-13 at 20.42.50.mp4" type="video/mp4">
+      Browser Anda tidak mendukung video.
+    </video>
+  </div>
+</section>
+
+<!-- 5 TEKNOLOGI -->
+<section class="slide">
+  <h1>⚙️ TEKNOLOGI YANG DIGUNAKAN</h1>
+  <p style="margin-bottom: 20px;">Stack teknologi modern untuk performa dan keamanan maksimal</p>
+  <div class="grid">
+    <div class="feature-item" onclick="popupImg(this)">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+      <h4>HTML5</h4>
+    </div>
+    <div class="feature-item" onclick="popupImg(this)">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+      <h4>CSS3</h4>
+    </div>
+    <div class="feature-item" onclick="popupImg(this)">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+      <h4>JAVASCRIPT</h4>
+    </div>
+  </div>
+</section>
+
+<!-- 6 ABOUT -->
+<section class="slide">
+  <h1>👤 DEVELOPER PROFILE</h1>
+  <div class="profile-container">
+    <div class="profile-photo">
+      <img src="c:\Users\ASUS\OneDrive\Desktop\UAS\GAMBAR\PP ME.jpeg" alt="Raihan Fasya">
+    </div>
+    <div class="profile-info">
+      <p><strong>Nama:</strong> Baharudin Yusup Habibi</p>
+      <p><strong>Posisi:</strong> IT Support & Web Developer</p>
+      <p><strong>Email:</strong> <a href="mailto:Habibibaharuddinyusuf@gmail.com">Habibibaharuddinyusuf@gmail.com</a></p>
+      <p style="margin-top: 20px;">Pengembang aplikasi Web E-Learning MAN 3 BOGOR yang berfokus pada pengalaman pengguna yang optimal, desain modern, dan teknologi terkini untuk mendukung transformasi digital pendidikan.</p>
+      <a class="link-btn" href="https://www.linkedin.com/in/baharuddin-yusuf-habibi-5a3996379/" target="_blank" style="margin-top: 20px;">🔗 CONNECT LINKEDIN</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="nav">
+  <button onclick="move(-1)">← PREV</button>
+  <button onclick="move(1)">NEXT →</button>
+</div>
+
+<div class="modal" id="modal" onclick="closeModal()">
+  <div class="modal-content" id="modalContent" onclick="event.stopPropagation()"></div>
+</div>
+
+<script>
+// GENERATE PARTICLES
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 60; i++) {
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.top = Math.random() * 100 + '%';
+  particle.style.animationDelay = Math.random() * 3 + 's';
+  particlesContainer.appendChild(particle);
+}
+
+// SLIDER
+let index = 0;
+const slider = document.getElementById('slider');
+const totalSlides = 6;
+
+function move(n) {
+  index = Math.max(0, Math.min(totalSlides - 1, index + n));
+  slider.style.transform = `translateX(-${index * 100}vw)`;
+}
+
+// KEYBOARD NAVIGATION
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight') move(1);
+  if (e.key === 'ArrowLeft') move(-1);
+  if (e.key === 'Escape') closeModal();
+});
+
+// POPUP
+const modal = document.getElementById('modal');
+const modalContent = document.getElementById('modalContent');
+
+function popup(text) {
+  modalContent.innerHTML = `
+    <p style="font-size:1.1rem; line-height:1.8; color:#cbd5e1;">${text}</p>
+    <button class="close" onclick="closeModal()">TUTUP</button>
+  `;
+  modal.style.display = 'flex';
+}
+
+function popupImg(el) {
+  const img = el.querySelector('img');
+  modalContent.innerHTML = `
+    <img src="${img.src}" style="width:100%; border-radius:20px;">
+    <button class="close" onclick="closeModal()">TUTUP</button>
+  `;
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  modal.style.display = 'none';
+}
+</script>
+
+</body>
+</html>
